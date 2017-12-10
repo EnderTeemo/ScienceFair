@@ -47,9 +47,9 @@ cal_z = sum_z / num_cal_samples
 print cal_x, cal_y, cal_z
 with open(filename + '.csv', 'w+') as csvfile:
 	writer = csv.writer(csvfile)
-	writer.writerow(['CalibrationX', 'CalibrationY', 'CalibrationZ'])
+	writer.writerow(['CalibrationX', 'CalibrationY', 'CalibrationZ', ' ', ' '])
 	writer.writerow([cal_x, cal_y, cal_z])
-	writer.writerow(['AccelerationX', 'AccelerationY', 'AccelerationZ', 'Time'])
+	writer.writerow(['AccelerationX', 'AccelerationY', 'AccelerationZ', 'Time', 'Activated'])
 	while True:
 		line = ser.readline()
 		time_now = datetime.datetime.now().time()
@@ -58,7 +58,7 @@ with open(filename + '.csv', 'w+') as csvfile:
 
 		# Equations to check if out side of activatable threshold
 		# The arm explanation kek
-		
+
 		bool_x = abs(int(list_of_values[0]) - cal_x) > activation_distance
 		bool_y = abs(int(list_of_values[1]) - cal_y) > activation_distance
 		bool_z = abs(int(list_of_values[2]) - cal_z) > activation_distance
